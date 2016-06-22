@@ -1,0 +1,15 @@
+[submodule "VABase"]
+	path = VABase
+	url = https://git.rwth-aachen.de/ita/VABase.git
+[submodule "VANet"]
+	path = VANet
+	url = https://git.rwth-aachen.de/ita/VANet.git
+[submodule "VACore"]
+	path = VACore
+	url = https://git.rwth-aachen.de/ita/VACore.git
+[submodule "VAServer"]
+	path = VAServer
+	url = https://git.rwth-aachen.de/ita/VAServer.git
+[submodule "VAMatlab"]
+	path = VAMatlab
+	url = https://git.rwth-aachen.de/ita/VAMatlab.git
