@@ -11,3 +11,7 @@ Copyright 2015-2016 Institute of Technical Acoustics, RWTH Aachen University. An
 ### Quick build guide
 
 VA is a collective of repositories. Clone VA using the --recursive flag, since it consists of submodules only. Use CMake and the this top-level CMakeLists.txt, which will generate a project with alle sub projects included.
+
+#### Updating
+
+To update to HEAD use the command `git submodule update --remote` in order to also update the submodules. Make sure that your local changes are not overwritten.
