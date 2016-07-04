@@ -14,6 +14,11 @@ list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
 
 include( VistaCommon )
 
+
+if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
+	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
+endif( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
+
 vista_find_package( Doxygen )
 vista_find_package( VistaCoreLibs REQUIRED FIND_DEPENDENCIES )
 
@@ -27,6 +32,10 @@ vista_find_package( ITASampler )
 # VA
 add_subdirectory( VABase )
 add_subdirectory( VACore )
-add_subdirectory( VAMatlab )
+#add_subdirectory( VAMatlab )
 add_subdirectory( VANet )
 add_subdirectory( VAServer )
+
+if( ITA_VA_INSTALL_WITH_DLLS )
+	vista_install_all_dlls( bin )
+endif()
