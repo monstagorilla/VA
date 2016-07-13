@@ -19,6 +19,10 @@ if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
 endif( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 
+if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
+	set( ITA_VA_WITH_BINDING_MATLAB OFF CACHE BOOL "Include Matlab binding for VA" )
+endif( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
+
 vista_find_package( Doxygen )
 vista_find_package( VistaCoreLibs REQUIRED FIND_DEPENDENCIES )
 
@@ -32,7 +36,9 @@ vista_find_package( ITASampler )
 # VA
 add_subdirectory( VABase )
 add_subdirectory( VACore )
-#add_subdirectory( VAMatlab )
+if (ITA_VA_WITH_BINDING_MATLAB )
+	add_subdirectory( VAMatlab )
+endif( ITA_VA_WITH_BINDING_MATLAB )
 add_subdirectory( VANet )
 add_subdirectory( VAServer )
 
