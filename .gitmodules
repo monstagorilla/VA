@@ -13,3 +13,12 @@
 [submodule "VAMatlab"]
 	path = VAMatlab
 	url = https://git.rwth-aachen.de/ita/VAMatlab.git
+[submodule "VALua"]
+	path = VALua
+	url = https://git.rwth-aachen.de/ita/VALua.git
+[submodule "VACS"]
+	path = VACS
+	url = https://git.rwth-aachen.de/ita/VACS.git
+[submodule "VAUnity"]
+	path = VAUnity
+	url = https://git.rwth-aachen.de/ita/VAUnity.git
