@@ -19,28 +19,61 @@ if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
 endif( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 
+
+if( NOT DEFINED ITA_VA_WITH_CORE )
+	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library (protected)" )
+endif( NOT DEFINED ITA_VA_WITH_CORE )
+
+
+if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
+	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (protected)" )
+endif( NOT DEFINED ITA_VA_WITH_SERVER_APP )
+
+
 if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
-	set( ITA_VA_WITH_BINDING_MATLAB OFF CACHE BOOL "Include Matlab binding for VA" )
+	set( ITA_VA_WITH_BINDING_MATLAB ON CACHE BOOL "Include Matlab binding for VA" )
 endif( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
 
-vista_find_package( Doxygen )
-vista_find_package( VistaCoreLibs REQUIRED FIND_DEPENDENCIES )
+if( NOT DEFINED ITA_VA_WITH_BINDING_CS )
+	set( ITA_VA_WITH_BINDING_CS ON CACHE BOOL "Include C# binding for VA" )
+endif( NOT DEFINED ITA_VA_WITH_BINDING_CS )
 
-vista_find_package( ITABase )
-vista_find_package( ITAConvolution )
-vista_find_package( ITAFFT )
-vista_find_package( ITADataSources )
-vista_find_package( ITACTC )
-vista_find_package( ITASampler )
+if( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
+	set( ITA_VA_WITH_BINDING_LUA OFF CACHE BOOL "Include Lua binding for VA" )
+endif( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
 
-# VA
+
+if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
+	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
+endif( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
+
+
+#vista_find_package( VistaCoreLibs REQUIRED COMPONENTS VistaBase VistaInterProcComm VistaTools VistaMath FIND_DEPENDENCIES )
+
+
+# VA submodules
 add_subdirectory( VABase )
+add_subdirectory( VANet )
+
+if( ITA_VA_WITH_CORE )
 add_subdirectory( VACore )
+endif( ITA_VA_WITH_CORE )
+
+if( ITA_VA_WITH_SERVER_APP )
+add_subdirectory( VAServer )
+endif( ITA_VA_WITH_SERVER_APP )
+
 if (ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
 endif( ITA_VA_WITH_BINDING_MATLAB )
-add_subdirectory( VANet )
-add_subdirectory( VAServer )
+
+if (ITA_VA_WITH_BINDING_CS )
+	add_subdirectory( VACS )
+endif( ITA_VA_WITH_BINDING_CS )
+
+if (ITA_VA_WITH_BINDING_LUA )
+	add_subdirectory( VALua )
+endif( ITA_VA_WITH_BINDING_LUA )
 
 if( ITA_VA_INSTALL_WITH_DLLS )
 	vista_install_all_dlls( bin )
