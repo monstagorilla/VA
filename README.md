@@ -1,7 +1,7 @@
 ## VA
 
 VA is the acronym for Virtual Acoustics, the generation of sound based on computation, simulation and reproduction.
-The main goal is to support those who want to create and design a audio-visual Virtual Reality.
+The main goal is to support those who want to create and design audio-visual Virtual Reality.
 VA provides acoustics applications with real-time capability that can be controlled by a network interface.
 
 This project includes *C++ libraries*, *bindings* to other programming and scripting languages as well as *applications* for real-time auralization.
@@ -13,7 +13,7 @@ This project includes *C++ libraries*, *bindings* to other programming and scrip
 
 In general, the VA interface and all binding libraries, wrappers and marshallers are licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 **The core functionality (VACore), on the other hand, is copyright protected. Any usage and distribution is prohibited, unless explicitly granted by the authors. 
-Also, every add-on, plugin and renderers or reproductions that include third-party libraries may have different licenses.**
+Also, every add-on, plugin, renderer or reproduction that include third-party libraries may have different licenses.**
 
 > For more information, read the LICENSE.md file in the respective submodule folders and take into consideration the third-party libraries used.
 
