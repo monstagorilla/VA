@@ -23,7 +23,7 @@ Also, every add-on, plugin, renderer or reproduction that include third-party li
 
 VA is a collective of repositories. Clone VA using the --recursive flag, since it mostly consists of submodules.
 Use CMake and the top-level CMakeLists.txt of the VA project. It will generate a poject file with alle sub-projects included.
-VA makes heavy use of ViSTA, the Virtual Reality Toolkit developed by the [Virtual Reality Group of the IT Center, RWTH Aachen University](http://www.itc.rwth-aachen.de/cms/IT-Center/Forschung-Projekte/~eubl/Virtuelle-Realitaet/).
+VA makes heavy use of [ViSTA, the Virtual Reality Toolkit](https://sourceforge.net/projects/vistavrtoolkit/files/) developed by the [Virtual Reality Group of the IT Center, RWTH Aachen University](http://www.itc.rwth-aachen.de/cms/IT-Center/Forschung-Projekte/~eubl/Virtuelle-Realitaet/).
 Hence, the build environment requires the VistaCMakeCommon extension for CMake in order to define and resolve all required dependencies.
 For more information, see the [Wiki pages of ITACoreLibs](https://git.rwth-aachen.de/ita/ITACoreLibs/wikis/home).
 
