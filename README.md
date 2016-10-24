@@ -28,14 +28,21 @@ Hence, the build environment requires the VistaCMakeCommon extension for CMake i
 For more information, see the [Wiki pages of ITACoreLibs](https://git.rwth-aachen.de/ita/ITACoreLibs/wikis/home).
 
 
-#### Updating to current version
+#### Working with submodules
 
-To update to HEAD use the command `git submodule update --remote` in order to also update the submodules. Make sure that your local changes are not overwritten.
+If you do not want to make any changes but update to the latest HEAD revision, use the command `git submodule update --remote` in order to also update the submodules.
+If you have already made changes, updating will fail.
+
+If you want to make changes to the submodule project, browse into the directory and checkout a branch since a submodule is per default detached from HEAD, i.e. the master branch:
+
+`git checkout master`
+
+Now make your changes, add, commit and push from this location as usual.
 
 
 #### Switching to a specific version
 
-To use a spefic version of a VA submodule, say VACore, you have to `cd VACore` and `git checkout v2017a`. From now on, take care when updating.
+To use a spefic version of a VA submodule, say VACore, you have to `cd VACore` and `git checkout v2017.a`. From now on, take care when updating.
 
 
 #### Cleaning up
