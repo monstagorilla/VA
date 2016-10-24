@@ -56,15 +56,17 @@ add_subdirectory( VABase )
 add_subdirectory( VANet )
 
 if( ITA_VA_WITH_CORE )
-add_subdirectory( VACore )
+	add_subdirectory( VACore )
 endif( ITA_VA_WITH_CORE )
 
 if( ITA_VA_WITH_SERVER_APP )
-add_subdirectory( VAServer )
+	add_subdirectory( VAServer )
+	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
 endif( ITA_VA_WITH_SERVER_APP )
 
 if (ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
+	vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
 endif( ITA_VA_WITH_BINDING_MATLAB )
 
 if (ITA_VA_WITH_BINDING_CS )
