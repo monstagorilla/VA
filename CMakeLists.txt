@@ -2,6 +2,8 @@ cmake_minimum_required( VERSION 2.8 )
 
 project( VA )
 
+set( VA_COMMON_BUILD ON )
+
 if( MSVC )
 	add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
 endif()
