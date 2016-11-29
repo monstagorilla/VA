@@ -2,6 +2,8 @@ cmake_minimum_required( VERSION 2.8 )
 
 project( VA )
 
+set( VA_COMMON_BUILD ON )
+
 if( MSVC )
 	add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
 endif()
@@ -64,16 +66,16 @@ if( ITA_VA_WITH_SERVER_APP )
 	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
 endif( ITA_VA_WITH_SERVER_APP )
 
-if (ITA_VA_WITH_BINDING_MATLAB )
+if( ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
 	vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
 endif( ITA_VA_WITH_BINDING_MATLAB )
 
-if (ITA_VA_WITH_BINDING_CS )
+if( ITA_VA_WITH_BINDING_CS )
 	add_subdirectory( VACS )
 endif( ITA_VA_WITH_BINDING_CS )
 
-if (ITA_VA_WITH_BINDING_LUA )
+if( ITA_VA_WITH_BINDING_LUA )
 	add_subdirectory( VALua )
 endif( ITA_VA_WITH_BINDING_LUA )
 
