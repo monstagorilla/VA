@@ -17,6 +17,23 @@ list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
 include( VistaCommon )
 
 
+if( NOT DEFINED ITA_VISTA_BUILD_STATIC )
+	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ViSTA libraries" )
+endif( )
+
+if( NOT DEFINED ITA_CORE_LIBS_BUILD_STATIC )
+	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ITA core libraries" )
+endif( )
+
+if( NOT DEFINED ITA_GEOMETRICAL_ACOUSTICS_STATIC )
+	set( ITA_GEOMETRICAL_ACOUSTICS_STATIC OFF CACHE BOOL "Build against static ITA geometrical acoustics libraries" )
+endif( )
+
+if( NOT DEFINED ITA_ACOUSTIC_VISUALIZATION_STATIC )
+	set( ITA_ACOUSTIC_VISUALIZATION_STATIC OFF CACHE BOOL "Build against static ITA acoustic visualization libraries" )
+endif( )
+
+
 if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
 endif( )
@@ -29,6 +46,11 @@ endif( )
 
 if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
 	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (protected)" )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_WITH_TESTS )
+	set( ITA_VA_WITH_TESTS OFF CACHE BOOL "Include VA tests" )
 endif( )
 
 
