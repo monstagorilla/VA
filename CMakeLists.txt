@@ -6,7 +6,7 @@ set( VA_COMMON_BUILD ON )
 
 if( MSVC )
 	add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
-endif()
+endif( )
 
 # example how to set ExternalLibs folder for an entire project (without ENV var)
 list( APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../VistaCMakeCommon" )
@@ -19,38 +19,36 @@ include( VistaCommon )
 
 if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
-endif( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_CORE )
 	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library (protected)" )
-endif( NOT DEFINED ITA_VA_WITH_CORE )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
 	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (protected)" )
-endif( NOT DEFINED ITA_VA_WITH_SERVER_APP )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
 	set( ITA_VA_WITH_BINDING_MATLAB ON CACHE BOOL "Include Matlab binding for VA" )
-endif( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
+endif( )
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_CS )
 	set( ITA_VA_WITH_BINDING_CS ON CACHE BOOL "Include C# binding for VA" )
-endif( NOT DEFINED ITA_VA_WITH_BINDING_CS )
+endif( )
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
 	set( ITA_VA_WITH_BINDING_LUA OFF CACHE BOOL "Include Lua binding for VA" )
-endif( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
 	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
-endif( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
+endif( )
 
-
-#vista_find_package( VistaCoreLibs REQUIRED COMPONENTS VistaBase VistaInterProcComm VistaTools VistaMath FIND_DEPENDENCIES )
 
 
 # VA submodules
@@ -59,26 +57,26 @@ add_subdirectory( VANet )
 
 if( ITA_VA_WITH_CORE )
 	add_subdirectory( VACore )
-endif( ITA_VA_WITH_CORE )
+endif( )
 
 if( ITA_VA_WITH_SERVER_APP )
 	add_subdirectory( VAServer )
 	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
-endif( ITA_VA_WITH_SERVER_APP )
+endif( )
 
 if( ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
 	vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
-endif( ITA_VA_WITH_BINDING_MATLAB )
+endif( )
 
 if( ITA_VA_WITH_BINDING_CS )
 	add_subdirectory( VACS )
-endif( ITA_VA_WITH_BINDING_CS )
+endif( )
 
 if( ITA_VA_WITH_BINDING_LUA )
 	add_subdirectory( VALua )
-endif( ITA_VA_WITH_BINDING_LUA )
+endif( )
 
 if( ITA_VA_INSTALL_WITH_DLLS )
 	vista_install_all_dlls( bin )
-endif()
+endif( )
