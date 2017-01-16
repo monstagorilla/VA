@@ -72,6 +72,10 @@ if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
 endif( )
 
 
+if( ITA_VA_INSTALL_WITH_DLLS )
+	vista_install_all_dlls( bin )
+endif( )
+
 
 # VA submodules
 add_subdirectory( VABase )
@@ -97,8 +101,4 @@ endif( )
 
 if( ITA_VA_WITH_BINDING_LUA )
 	add_subdirectory( VALua )
-endif( )
-
-if( ITA_VA_INSTALL_WITH_DLLS )
-	vista_install_all_dlls( bin )
 endif( )
