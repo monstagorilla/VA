@@ -9,11 +9,11 @@ This project includes *C++ libraries*, *bindings* to other programming and scrip
 
 ### License
 
-**Copyright 2015-2016 Institute of Technical Acoustics, RWTH Aachen University.**
+**Copyright 2015-2017 Institute of Technical Acoustics, RWTH Aachen University.**
 
 In general, the VA interface and all binding libraries, wrappers and marshallers are licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 **The core functionality (VACore), on the other hand, is copyright protected. Any usage and distribution is prohibited, unless explicitly granted by the authors. 
-Also, every add-on, plugin, renderer or reproduction that include third-party libraries may have different license.**
+Also, every add-on, plugin, renderer or reproduction that include third-party libraries may have different licenses.**
 
 > For more information, read the LICENSE.md file in the respective submodule folders and take into consideration the third-party libraries used.
 
