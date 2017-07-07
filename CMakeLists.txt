@@ -54,6 +54,11 @@ if( NOT DEFINED ITA_VA_WITH_TESTS )
 endif( )
 
 
+if( NOT DEFINED ITA_VA_WITH_BENCHMARKS )
+	set( ITA_VA_WITH_BENCHMARKS OFF CACHE BOOL "Include VA benchmarks" )
+endif( )
+
+
 if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
 	set( ITA_VA_WITH_BINDING_MATLAB ON CACHE BOOL "Include Matlab binding for VA" )
 endif( )
