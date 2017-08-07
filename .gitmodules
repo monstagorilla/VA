@@ -22,3 +22,6 @@
 [submodule "VAUnity"]
 	path = VAUnity
 	url = https://git.rwth-aachen.de/ita/VAUnity.git
+[submodule "VAUnityExensions"]
+	path = VAUnityExtensions
+	url = https://git.rwth-aachen.de/ita/VAUnityExtensions.git
