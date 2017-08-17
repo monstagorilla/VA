@@ -25,3 +25,6 @@
 [submodule "VAUnityExtensions"]
 	path = VAUnityExtensions
 	url = https://git.rwth-aachen.de/ita/VAUnityExtensions
+[submodule "VAPython"]
+	path = VAPython
+	url = https://git.rwth-aachen.de/ita/VAPython
