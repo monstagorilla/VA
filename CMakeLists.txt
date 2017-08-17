@@ -71,6 +71,10 @@ if( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
 	set( ITA_VA_WITH_BINDING_LUA OFF CACHE BOOL "Include Lua binding for VA" )
 endif( )
 
+if( NOT DEFINED ITA_VA_WITH_BINDING_PYTHON )
+	set( ITA_VA_WITH_BINDING_PYTHON OFF CACHE BOOL "Include Python binding for VA" )
+endif( )
+
 
 if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
 	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
@@ -106,4 +110,8 @@ endif( )
 
 if( ITA_VA_WITH_BINDING_LUA )
 	add_subdirectory( VALua )
+endif( )
+
+if( ITA_VA_WITH_BINDING_PYTHON )
+	add_subdirectory( VAPython )
 endif( )
