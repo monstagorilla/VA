@@ -6,17 +6,28 @@ VA provides acoustics applications with real-time capability that can be control
 
 This project includes *C++ libraries*, *bindings* to other programming and scripting languages as well as *applications* for real-time auralization.
 
+### History
+
+VA was invented and developed in a series of scientific projects at the Institute of Technical Acoustics (ITA), RWTH Aachen University. If was first introduced as a software application for loudspeaker-based real-time auralization by Tobias Lentz. It made progress with a joint project for an audio-visual application in the first CAVE-like system in close collaboration with the [Virtual Reality Group lead by Prof. Torsten Kuhlen at the RWTH Aachen University](http://www.vr.rwth-aachen.de).
+
+After the decision to build a [new CAVE-like system](http://www.itc.rwth-aachen.de/cms/IT-Center/Forschung-Projekte/Virtuelle-Realitaet/Infrastruktur/~fgqa/aixCAVE/), Frank Wefers started to re-invent Virtual Acoustics under the acronym VA and added support for a sophisticated C++ interfacing that also allows for networked bindings to be implemented fairly easy.
+
 
 ### License
 
 **Copyright 2015-2017 Institute of Technical Acoustics, RWTH Aachen University.**
 
-In general, the VA interface and all binding libraries, wrappers and marshallers are licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-**The core functionality (VACore), on the other hand, is copyright protected. Any usage and distribution is prohibited, unless explicitly granted by the authors. 
-Also, every add-on, plugin, renderer or reproduction that include third-party libraries may have different licenses.**
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use files of this project except in compliance with the License.
+You may obtain a copy of the License at
 
-> For more information, read the LICENSE.md file in the respective submodule folders and take into consideration the third-party libraries used.
+<http://www.apache.org/licenses/LICENSE-2.0>
 
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 
 ### Quick build guide
