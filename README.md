@@ -8,7 +8,7 @@ This project includes *C++ libraries*, *bindings* to other programming and scrip
 
 ### History
 
-VA was invented and developed in a series of scientific projects at the Institute of Technical Acoustics (ITA), RWTH Aachen University. It was first introduced as a software application for loudspeaker-based real-time auralization using binaural rendering and 4-channel cross-talk cancellation by Tobias Lentz. It made progress with a joint project for an audio-visual application in the first CAVE-like system in close collaboration with the [Virtual Reality Group lead by Prof. Torsten Kuhlen at the RWTH Aachen University](http://www.vr.rwth-aachen.de).
+The concept of VA was invented and developed in a series of scientific projects at the Institute of Technical Acoustics (ITA), RWTH Aachen University. It was first introduced as a software application for loudspeaker-based real-time auralization using binaural rendering and 4-channel cross-talk cancellation by Tobias Lentz. It made progress with a joint project for an audio-visual application in the first CAVE-like system in close collaboration with the [Virtual Reality Group led by Prof. Torsten Kuhlen at the RWTH Aachen University](http://www.vr.rwth-aachen.de).
 
 After the decision to build a [new CAVE-like system](http://www.itc.rwth-aachen.de/cms/IT-Center/Forschung-Projekte/Virtuelle-Realitaet/Infrastruktur/~fgqa/aixCAVE/), Frank Wefers started to re-invent Virtual Acoustics under the acronym VA and added support for a sophisticated C++ interfacing that also allows for networked bindings to be implemented fairly easy.
 
