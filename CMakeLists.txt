@@ -16,6 +16,7 @@ list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
 
 include( VistaCommon )
 
+vista_find_package( Doxygen QUIET )
 
 if( NOT DEFINED ITA_VISTA_BUILD_STATIC )
 	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ViSTA libraries" )
@@ -51,6 +52,11 @@ endif( )
 
 if( NOT DEFINED ITA_VA_WITH_TESTS )
 	set( ITA_VA_WITH_TESTS OFF CACHE BOOL "Include VA tests" )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_GENERATE_DOCUMENTATION )
+	set( ITA_VA_GENERATE_DOCUMENTATION OFF CACHE BOOL "Generate source VA documentation (requires Doxygen)" )
 endif( )
 
 
@@ -115,3 +121,17 @@ endif( )
 if( ITA_VA_WITH_BINDING_PYTHON )
 	add_subdirectory( VAPython )
 endif( )
+
+
+# doc
+
+if( ITA_VA_GENERATE_DOCUMENTATION )
+
+	if( NOT DOXYGEN_EXECUTABLE )
+		message( FATAL_ERROR "VA documentation requires Doxygen." )
+	endif( )
+
+	add_subdirectory( "doc" )
+
+endif( )
+
