@@ -6,7 +6,7 @@ set( VA_COMMON_BUILD ON )
 
 if( MSVC )
 	add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
-endif()
+endif( )
 
 # example how to set ExternalLibs folder for an entire project (without ENV var)
 list( APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../VistaCMakeCommon" )
@@ -16,41 +16,80 @@ list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
 
 include( VistaCommon )
 
+vista_find_package( Doxygen QUIET )
+
+if( NOT DEFINED ITA_VISTA_BUILD_STATIC )
+	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ViSTA libraries" )
+endif( )
+
+if( NOT DEFINED ITA_CORE_LIBS_BUILD_STATIC )
+	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ITA core libraries" )
+endif( )
+
+if( NOT DEFINED ITA_GEOMETRICAL_ACOUSTICS_STATIC )
+	set( ITA_GEOMETRICAL_ACOUSTICS_STATIC OFF CACHE BOOL "Build against static ITA geometrical acoustics libraries" )
+endif( )
+
+if( NOT DEFINED ITA_ACOUSTIC_VISUALIZATION_STATIC )
+	set( ITA_ACOUSTIC_VISUALIZATION_STATIC OFF CACHE BOOL "Build against static ITA acoustic visualization libraries" )
+endif( )
+
 
 if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
 	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
-endif( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_CORE )
 	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library (protected)" )
-endif( NOT DEFINED ITA_VA_WITH_CORE )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
 	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (protected)" )
-endif( NOT DEFINED ITA_VA_WITH_SERVER_APP )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_WITH_TESTS )
+	set( ITA_VA_WITH_TESTS OFF CACHE BOOL "Include VA tests" )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_GENERATE_DOCUMENTATION )
+	set( ITA_VA_GENERATE_DOCUMENTATION OFF CACHE BOOL "Generate source VA documentation (requires Doxygen)" )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_WITH_BENCHMARKS )
+	set( ITA_VA_WITH_BENCHMARKS OFF CACHE BOOL "Include VA benchmarks" )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
 	set( ITA_VA_WITH_BINDING_MATLAB ON CACHE BOOL "Include Matlab binding for VA" )
-endif( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
+endif( )
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_CS )
 	set( ITA_VA_WITH_BINDING_CS ON CACHE BOOL "Include C# binding for VA" )
-endif( NOT DEFINED ITA_VA_WITH_BINDING_CS )
+endif( )
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
 	set( ITA_VA_WITH_BINDING_LUA OFF CACHE BOOL "Include Lua binding for VA" )
-endif( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
+endif( )
+
+if( NOT DEFINED ITA_VA_WITH_BINDING_PYTHON )
+	set( ITA_VA_WITH_BINDING_PYTHON OFF CACHE BOOL "Include Python binding for VA" )
+endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
 	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
-endif( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
+endif( )
 
 
-#vista_find_package( VistaCoreLibs REQUIRED COMPONENTS VistaBase VistaInterProcComm VistaTools VistaMath FIND_DEPENDENCIES )
+if( ITA_VA_INSTALL_WITH_DLLS )
+	vista_install_all_dlls( bin )
+endif( )
 
 
 # VA submodules
@@ -59,26 +98,40 @@ add_subdirectory( VANet )
 
 if( ITA_VA_WITH_CORE )
 	add_subdirectory( VACore )
-endif( ITA_VA_WITH_CORE )
+endif( )
 
 if( ITA_VA_WITH_SERVER_APP )
 	add_subdirectory( VAServer )
 	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
-endif( ITA_VA_WITH_SERVER_APP )
+endif( )
 
 if( ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
 	vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
-endif( ITA_VA_WITH_BINDING_MATLAB )
+endif( )
 
 if( ITA_VA_WITH_BINDING_CS )
 	add_subdirectory( VACS )
-endif( ITA_VA_WITH_BINDING_CS )
+endif( )
 
 if( ITA_VA_WITH_BINDING_LUA )
 	add_subdirectory( VALua )
-endif( ITA_VA_WITH_BINDING_LUA )
+endif( )
 
-if( ITA_VA_INSTALL_WITH_DLLS )
-	vista_install_all_dlls( bin )
-endif()
+if( ITA_VA_WITH_BINDING_PYTHON )
+	add_subdirectory( VAPython )
+endif( )
+
+
+# doc
+
+if( ITA_VA_GENERATE_DOCUMENTATION )
+
+	if( NOT DOXYGEN_EXECUTABLE )
+		message( FATAL_ERROR "VA documentation requires Doxygen." )
+	endif( )
+
+	add_subdirectory( "doc" )
+
+endif( )
+
