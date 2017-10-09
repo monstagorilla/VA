@@ -1,40 +1,44 @@
 [submodule "VABase"]
 	path = VABase
 	url = https://git.rwth-aachen.de/ita/VABase.git
-	branch = master
+	branch = develop
 [submodule "VANet"]
 	path = VANet
 	url = https://git.rwth-aachen.de/ita/VANet.git
-	branch = master
+	branch = develop
 [submodule "VACore"]
 	path = VACore
 	url = https://git.rwth-aachen.de/ita/VACore.git
-	branch = master
+	branch = develop
 [submodule "VAServer"]
 	path = VAServer
 	url = https://git.rwth-aachen.de/ita/VAServer.git
-	branch = master
+	branch = develop
 [submodule "VAMatlab"]
 	path = VAMatlab
 	url = https://git.rwth-aachen.de/ita/VAMatlab.git
-	branch = master
+	branch = develop
 [submodule "VALua"]
 	path = VALua
 	url = https://git.rwth-aachen.de/ita/VALua.git
-	branch = master
+	branch = develop
 [submodule "VACS"]
 	path = VACS
 	url = https://git.rwth-aachen.de/ita/VACS.git
-	branch = master
+	branch = develop
 [submodule "VAUnity"]
 	path = VAUnity
 	url = https://git.rwth-aachen.de/ita/VAUnity.git
-	branch = master
+	branch = develop
 [submodule "VAUnityExtensions"]
 	path = VAUnityExtensions
 	url = https://git.rwth-aachen.de/ita/VAUnityExtensions.git
-	branch = master
+	branch = develop
 [submodule "VAPython"]
 	path = VAPython
 	url = http://git.rwth-aachen.de/ita/VAPython.git
-	branch = master
+	branch = develop
+[submodule "VAWebsite"]
+	path = VAWebsite
+	url = http://git.rwth-aachen.de/ita/VAWebsite.git
+	branch = develop
