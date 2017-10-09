@@ -40,5 +40,6 @@
 	branch = develop
 [submodule "VAWebsite"]
 	path = VAWebsite
-	url = http://git.rwth-aachen.de/ita/VAWebsite.git
-	branch = develop
+	url = https://git.rwth-aachen.de/ita/VAWebsite.git
+	branch = master
+
