@@ -41,12 +41,17 @@ endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_CORE )
-	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library (protected)" )
+	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library" )
 endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
-	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (protected)" )
+	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application" )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_WITH_REDSTART_APP )
+	set( ITA_VA_WITH_REDSTART_APP OFF CACHE BOOL "Include Redstart, the VA GUI application" )
 endif( )
 
 
@@ -102,6 +107,11 @@ endif( )
 
 if( ITA_VA_WITH_SERVER_APP )
 	add_subdirectory( VAServer )
+	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
+endif( )
+
+if( ITA_VA_WITH_REDSTART_APP )
+	add_subdirectory( Redstart )
 	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
 endif( )
 

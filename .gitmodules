@@ -38,6 +38,10 @@
 	path = VAPython
 	url = http://git.rwth-aachen.de/ita/VAPython.git
 	branch = develop
+[submodule "Redstart"]
+	path = Redstart
+	url = http://git.rwth-aachen.de/ita/Redstart.git
+	branch = master
 [submodule "VAWebsite"]
 	path = VAWebsite
 	url = https://git.rwth-aachen.de/ita/VAWebsite.git
