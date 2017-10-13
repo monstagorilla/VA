@@ -115,17 +115,17 @@ INPUT                  = @CMAKE_SOURCE_DIR@/VABase/include \
 						 @CMAKE_SOURCE_DIR@/VABase/src \
 						 @CMAKE_SOURCE_DIR@/VANet/include \
 						 @CMAKE_SOURCE_DIR@/VANet/src \
-						 @CMAKE_SOURCE_DIR@/VACore/include \
-						 @CMAKE_SOURCE_DIR@/VACore/src \
-						 @CMAKE_SOURCE_DIR@/VACS/include \
-						 @CMAKE_SOURCE_DIR@/VALua/src \
-						 @CMAKE_SOURCE_DIR@/VALua/include \
-						 @CMAKE_SOURCE_DIR@/VAMatlab/src \
-						 @CMAKE_SOURCE_DIR@/VAMatlab/include \
-						 @CMAKE_SOURCE_DIR@/VAPython/src \
-						 @CMAKE_SOURCE_DIR@/VAPython/include \
-						 @CMAKE_SOURCE_DIR@/VAServer\
-						 @CMAKE_SOURCE_DIR@/VAUnity 
+						 #@CMAKE_SOURCE_DIR@/VACore/include \
+						 #@CMAKE_SOURCE_DIR@/VACore/src \
+						 #@CMAKE_SOURCE_DIR@/VACS/include \
+						 #@CMAKE_SOURCE_DIR@/VALua/src \
+						 #@CMAKE_SOURCE_DIR@/VALua/include \
+						 #@CMAKE_SOURCE_DIR@/VAMatlab/src \
+						 #@CMAKE_SOURCE_DIR@/VAMatlab/include \
+						 #@CMAKE_SOURCE_DIR@/VAPython/src \
+						 #@CMAKE_SOURCE_DIR@/VAPython/include \
+						 #@CMAKE_SOURCE_DIR@/VAServer\
+						 #@CMAKE_SOURCE_DIR@/VAUnity 
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
