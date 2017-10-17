@@ -98,6 +98,7 @@ endif( )
 
 
 # VA submodules
+
 add_subdirectory( VABase )
 add_subdirectory( VANet )
 
@@ -133,6 +134,17 @@ if( ITA_VA_WITH_BINDING_PYTHON )
 endif( )
 
 
+# version
+
+if( NOT DEFINED ITA_VA_VERSION_MAJOR )
+	set( ITA_VA_VERSION_MAJOR "v2017" CACHE STRING "VA version major (usually 'v' and year)" )
+endif( )
+
+if( NOT DEFINED ITA_VA_VERSION_MINOR )
+	set( ITA_VA_VERSION_MINOR "d" CACHE STRING "VA version minor (usually a,b,c ...)" )
+endif( )
+
+
 # doc
 
 if( ITA_VA_GENERATE_DOCUMENTATION )
@@ -140,8 +152,13 @@ if( ITA_VA_GENERATE_DOCUMENTATION )
 	if( NOT DOXYGEN_EXECUTABLE )
 		message( FATAL_ERROR "VA documentation requires Doxygen." )
 	endif( )
+	
+	set( VAWEBSITE_FOUND OFF )
+	if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
+		set( VAWEBSITE_FOUND ON )
+		set( VAWEBSITE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
+	endif( )
 
 	add_subdirectory( "doc" )
 
 endif( )
-
