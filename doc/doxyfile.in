@@ -115,7 +115,7 @@ INPUT                  = @CMAKE_SOURCE_DIR@/VABase/include \
 						 @CMAKE_SOURCE_DIR@/VABase/src \
 						 @CMAKE_SOURCE_DIR@/VANet/include \
 						 @CMAKE_SOURCE_DIR@/VANet/src \
-						 #@CMAKE_SOURCE_DIR@/VACore/include \
+						 @CMAKE_SOURCE_DIR@/VACore/include \
 						 #@CMAKE_SOURCE_DIR@/VACore/src \
 						 #@CMAKE_SOURCE_DIR@/VACS/include \
 						 #@CMAKE_SOURCE_DIR@/VALua/src \
