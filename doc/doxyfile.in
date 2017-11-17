@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "Virtual Acoustics (VA) C++ API"
-PROJECT_NUMBER         = v2017d
+PROJECT_NUMBER         = v2018a
 PROJECT_BRIEF          = "Virtual Acoustics is a real-time auralization framework devoted to Virtual Reality."
 #PROJECT_LOGO           = @CMAKE_CURRENT_SOURCE_DIR@/logo.png
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/
@@ -116,16 +116,16 @@ INPUT                  = @CMAKE_SOURCE_DIR@/VABase/include \
 						 @CMAKE_SOURCE_DIR@/VANet/include \
 						 @CMAKE_SOURCE_DIR@/VANet/src \
 						 @CMAKE_SOURCE_DIR@/VACore/include \
-						 @CMAKE_SOURCE_DIR@/VACore/src \
-						 @CMAKE_SOURCE_DIR@/VACS/include \
-						 @CMAKE_SOURCE_DIR@/VALua/src \
-						 @CMAKE_SOURCE_DIR@/VALua/include \
-						 @CMAKE_SOURCE_DIR@/VAMatlab/src \
-						 @CMAKE_SOURCE_DIR@/VAMatlab/include \
-						 @CMAKE_SOURCE_DIR@/VAPython/src \
-						 @CMAKE_SOURCE_DIR@/VAPython/include \
-						 @CMAKE_SOURCE_DIR@/VAServer\
-						 @CMAKE_SOURCE_DIR@/VAUnity 
+						 #@CMAKE_SOURCE_DIR@/VACore/src \
+						 #@CMAKE_SOURCE_DIR@/VACS/include \
+						 #@CMAKE_SOURCE_DIR@/VALua/src \
+						 #@CMAKE_SOURCE_DIR@/VALua/include \
+						 #@CMAKE_SOURCE_DIR@/VAMatlab/src \
+						 #@CMAKE_SOURCE_DIR@/VAMatlab/include \
+						 #@CMAKE_SOURCE_DIR@/VAPython/src \
+						 #@CMAKE_SOURCE_DIR@/VAPython/include \
+						 #@CMAKE_SOURCE_DIR@/VAServer\
+						 #@CMAKE_SOURCE_DIR@/VAUnity 
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \

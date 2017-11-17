@@ -41,12 +41,17 @@ endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_CORE )
-	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library (protected)" )
+	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library" )
 endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
-	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (protected)" )
+	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application" )
+endif( )
+
+
+if( NOT DEFINED ITA_VA_WITH_REDSTART_APP )
+	set( ITA_VA_WITH_REDSTART_APP OFF CACHE BOOL "Include Redstart, the VA GUI application" )
 endif( )
 
 
@@ -82,7 +87,7 @@ if( NOT DEFINED ITA_VA_WITH_BINDING_PYTHON )
 endif( )
 
 
-if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
+if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
 	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
 endif( )
 
@@ -93,6 +98,7 @@ endif( )
 
 
 # VA submodules
+
 add_subdirectory( VABase )
 add_subdirectory( VANet )
 
@@ -102,6 +108,11 @@ endif( )
 
 if( ITA_VA_WITH_SERVER_APP )
 	add_subdirectory( VAServer )
+	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
+endif( )
+
+if( ITA_VA_WITH_REDSTART_APP )
+	add_subdirectory( Redstart )
 	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
 endif( )
 
@@ -123,6 +134,17 @@ if( ITA_VA_WITH_BINDING_PYTHON )
 endif( )
 
 
+# version
+
+if( NOT DEFINED ITA_VA_VERSION_MAJOR )
+	set( ITA_VA_VERSION_MAJOR "v2018" CACHE STRING "VA version major (usually 'v' and year)" )
+endif( )
+
+if( NOT DEFINED ITA_VA_VERSION_MINOR )
+	set( ITA_VA_VERSION_MINOR "a" CACHE STRING "VA version minor (usually a,b,c ...)" )
+endif( )
+
+
 # doc
 
 if( ITA_VA_GENERATE_DOCUMENTATION )
@@ -130,8 +152,21 @@ if( ITA_VA_GENERATE_DOCUMENTATION )
 	if( NOT DOXYGEN_EXECUTABLE )
 		message( FATAL_ERROR "VA documentation requires Doxygen." )
 	endif( )
+	
+	set( VAWEBSITE_FOUND OFF )
+	if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
+		set( VAWEBSITE_FOUND ON )
+		set( VAWEBSITE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
+	endif( )
 
 	add_subdirectory( "doc" )
 
 endif( )
 
+
+# unity
+
+if( ITA_VA_WITH_UNITY_SCRIPTS )
+	install( DIRECTORY "VAUnity" DESTINATION "unity" )
+	install( DIRECTORY "VAUnityExtensions" DESTINATION "unity" )
+endif( )
