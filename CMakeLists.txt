@@ -87,7 +87,7 @@ if( NOT DEFINED ITA_VA_WITH_BINDING_PYTHON )
 endif( )
 
 
-if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS)
+if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
 	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
 endif( )
 
@@ -137,11 +137,11 @@ endif( )
 # version
 
 if( NOT DEFINED ITA_VA_VERSION_MAJOR )
-	set( ITA_VA_VERSION_MAJOR "v2017" CACHE STRING "VA version major (usually 'v' and year)" )
+	set( ITA_VA_VERSION_MAJOR "v2018" CACHE STRING "VA version major (usually 'v' and year)" )
 endif( )
 
 if( NOT DEFINED ITA_VA_VERSION_MINOR )
-	set( ITA_VA_VERSION_MINOR "d" CACHE STRING "VA version minor (usually a,b,c ...)" )
+	set( ITA_VA_VERSION_MINOR "a" CACHE STRING "VA version minor (usually a,b,c ...)" )
 endif( )
 
 
@@ -161,4 +161,12 @@ if( ITA_VA_GENERATE_DOCUMENTATION )
 
 	add_subdirectory( "doc" )
 
+endif( )
+
+
+# unity
+
+if( ITA_VA_WITH_UNITY_SCRIPTS )
+	install( DIRECTORY "VAUnity" DESTINATION "unity" )
+	install( DIRECTORY "VAUnityExtensions" DESTINATION "unity" )
 endif( )
