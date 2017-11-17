@@ -53,6 +53,9 @@ Now make your changes, add, commit and push from this location as usual.
 For convenience, GIT also provides a batch command that performs the call for each submodule:
 `git submodule foreach git checkout master`
 
+For switching branches while skipping if a specific branch is not present, use
+`git submodule foreach "git checkout develop || true"`
+
 
 #### Switching to a specific version
 
@@ -63,4 +66,4 @@ To use a spefic version of a VA submodule, say VACore, you have to `cd VACore` a
 
 Sometimes, submodules remain in a dirty state because files are created by the build environment - which are not under version control.
 If you want to clean up your working directory, use `git submodule foreach git clean -f -n`, and remove the `-n` if your are sure to remove the listed files in the submodules.
-Afterwards, a `git submodule status` should return a clean copy.
+Afterwards, a `git submodule status` should return a clean copy.:
