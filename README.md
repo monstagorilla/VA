@@ -30,6 +30,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
+### VA logo
+
+The VA logo is a figurative trade mark and has a dedicated licens. For more information, see the [README file in the logo folder](logo/README.md).
+
+<center>
+![alt text](logo/VA_logo_solitaire_bt_300x200.png "Official solitaire VA (Virtual Acoustics) logo, black & transparent")
+</center>
+
+
 ### Quick build guide
 
 VA is a collective of repositories. Clone VA using the `--recursive` flag, since it mostly consists of submodules.
