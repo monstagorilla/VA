@@ -30,9 +30,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-### VA logo
+### Logo
 
-The VA logo is a figurative trade mark and has a dedicated license. For more information, see the [README file in the logo folder](logo/README.md).
+The VA logo is a figurative trade mark and has a dedicated license. You may use the logo under certain conditions. For more information, see the [README file in the logo folder](logo/README.md).
 
 <center>
 ![alt text](logo/VA_logo_solitaire_bt_300x200.png "Official solitaire VA (Virtual Acoustics) logo, black & transparent")
