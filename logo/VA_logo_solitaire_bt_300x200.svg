@@ -15,8 +15,8 @@
    id="svg4168"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="VA_logo_solitaire_bw_300x200.svg"
-   inkscape:export-filename="C:\dev\VA\logo\VA_logo_solitaire_bw_300x200.png"
+   sodipodi:docname="VA_logo_solitaire_bt_300x200.svg"
+   inkscape:export-filename="C:\dev\VA\logo\VA_logo_solitaire_wt_300x200.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -30,16 +30,18 @@
      inkscape:pageshadow="2"
      inkscape:zoom="3.26"
      inkscape:cx="150"
-     inkscape:cy="112.23488"
+     inkscape:cy="118.6792"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4262"
      showgrid="false"
      units="px"
      inkscape:window-width="1600"
      inkscape:window-height="837"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata4173">
     <rdf:RDF>
@@ -61,18 +63,23 @@
        id="g4262"
        transform="translate(-218.12651,811.24657)"
        style="stroke:none">
-      <path
-         sodipodi:nodetypes="cccccccccc"
-         inkscape:connector-curvature="0"
-         id="path4173-8"
-         d="M 485.23296,209.96278 417.64687,72.268517 349.57112,209.96278 l 26.01436,0 42.06139,-89.68072 25.23922,51.45609 c 0,0 -17.23695,-5.19296 -27.24777,2.3039 31.79143,7.18761 38.51319,22.64123 38.51319,22.64123 l 7.41859,13.2795 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         sodipodi:nodetypes="cccccccccc"
-         inkscape:connector-curvature="0"
-         id="path4173-8-0"
-         d="m 251.02006,72.268517 67.58609,137.694313 68.07575,-137.694266 -26.01436,0 -42.06139,89.680716 -25.23922,-51.45609 c 0,0 17.23695,5.19297 27.24777,-2.3039 -31.79143,-7.18765 -38.51319,-22.64123 -38.51319,-22.64123 l -7.41859,-13.279496 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <g
+         id="g4226"
+         transform="translate(8.422935,2.3706054e-6)"
+         style="fill:#000000;fill-opacity:1">
+        <path
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:connector-curvature="0"
+           id="path4173-8-0"
+           d="m 270.39125,72.24729 -23.7832,0 68.50484,137.73676 68.54007,-137.73676 -23.78124,0 -44.61313,89.803 -21.22395,-41.53668 21.22395,0.3757 C 287.5267,114.60642 282.19568,93.445394 270.39125,72.24729 Z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:connector-curvature="0"
+           id="path4173-8-0-3"
+           d="m 449.0159,209.98405 23.7832,0 -68.50484,-137.736757 -68.54007,137.736757 23.78124,0 44.61313,-89.80301 21.22395,41.53668 -21.22395,-0.3757 c 27.73189,6.28289 33.06291,27.44393 44.86734,48.64203 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
     </g>
   </g>
 </svg>
