@@ -1,4 +1,4 @@
-Copyright 2015-2017 Institute of Technical Acoustics (ITA), RWTH Aachen University
+Copyright 2015-2018 Institute of Technical Acoustics (ITA), RWTH Aachen University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use files of this project except in compliance with the License.
