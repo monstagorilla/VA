@@ -145,6 +145,11 @@ if( NOT DEFINED ITA_VA_VERSION_MINOR )
 endif( )
 
 
+# License and readme
+
+install( FILES README.md LICENSE.md DESTINATION . )
+install( DIRECTORY logo DESTINATION .)
+
 # doc
 
 if( ITA_VA_GENERATE_DOCUMENTATION )
