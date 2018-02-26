@@ -104,6 +104,10 @@ add_subdirectory( VANet )
 
 if( ITA_VA_WITH_CORE )
 	add_subdirectory( VACore )
+	if( ITA_VA_COPYING_GNU_GPL )
+		message( "The VACore configuration you have selected requires copying under the terms of the GNU General Public License. This license includes a copyleft. If you are linking against this library version, make sure that the license agreement is not violated. Will add the required COPYING file to the distribution." )
+		
+	endif( )
 endif( )
 
 if( ITA_VA_WITH_SERVER_APP )
@@ -145,10 +149,23 @@ if( NOT DEFINED ITA_VA_VERSION_MINOR )
 endif( )
 
 
-# license, readme and logo
+# (selective) license, readme and logo
 
-install( FILES README.md LICENSE.md DESTINATION . )
-install( DIRECTORY logo DESTINATION .)
+install( FILES README.md DESTINATION . )
+install( DIRECTORY logo DESTINATION . )
+
+if( ITA_VA_COPYING_GNU_GPL )
+
+	set( SELECTED_LICENSE "GNU General Public License" )
+	set( GPL_DEPENDENCIES "FFTW3" )
+	configure_file( COPYING.proto "${CMAKE_CURRENT_SOURCE_DIR}/COPYING" @ONLY )
+	install( FILES COPYING DESTINATION . )
+	
+else( )
+
+	install( FILES LICENSE.md DESTINATION . )
+
+endif( )
 
 
 # doc
