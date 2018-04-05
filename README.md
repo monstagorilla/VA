@@ -13,9 +13,17 @@ The concept of VA was invented and developed in a series of scientific projects 
 After the decision to build a [new CAVE-like system](http://www.itc.rwth-aachen.de/cms/IT-Center/Forschung-Projekte/Virtuelle-Realitaet/Infrastruktur/~fgqa/aixCAVE/), Frank Wefers started to re-invent Virtual Acoustics under the acronym VA and added support for a sophisticated C++ interfacing that also allows for networked bindings to be implemented fairly easy.
 
 
-### License
+### Purpose and license
 
-Copyright 2015-2017 Institute of Technical Acoustics (ITA), RWTH Aachen University.
+VA has been made available to the public in the spirit of sharing knowledge, giving possibility to build upon it and employing it for scientific research that should be reproducible. In practice this usually requires a binary version of specialized VA package to be uploaded to an open access research repository for a certain amount of time (like 10 years).
+
+The final license of a VA binary package depends on the *build configuration* and hence a *license compatibility with depending packages* that are linked against the VACore (in case of dynamic linking) and/or the final applications using VA (like Redstart and VAServer). Therefore, we have decided to generally use the permissive Apache License, Version 2.0, for our entire code base. It releases any researcher from the burden of imposing a dedicated license, yet requires stating the name and making clear where the original source of the version used can be obtained from - very much like a thorough (data) citation in a scientific publication.
+
+Unfortunately, any copyleft license, notably the GNU General Public License (GPL) and the GNU Lesser GPL, is incompatible using it this way (distributing Apache licensed binary packages that link against GPL libraries). VA is not per se using GPL dependencies (hence we do not per se use (L)GPL for our code) but there are build configurations that demand it. As a solution, we license those VA binary distributions (linking against (L)GPL libraries) under the respective license, subjogating to the viral nature of copyleft. This approach has similarity to dual licensing Apache and newer GPL, but we do not give a *choice* as the Apache license should be favored when no copyleft dependency is included, as it is compatible with newer GPL licenses anyway (in other words: *can be linked against by a GPL binary*). We clearly state that we support the idea of open source software and want to act in that spirit by encouraging further open source usage. However, we do not want to enforce a specific copyleft license to be used in open science practice, as this might exclude scientific institutions that can not follow this path.
+
+#### VA code license
+
+Copyright 2015-2018 Institute of Technical Acoustics (ITA), RWTH Aachen University.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use files of this project except in compliance with the License.
@@ -28,6 +36,17 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+#### VA binaries license (selective license depending on third party library licenses)
+
+If a distributed binary package of VA is provided for download and (partly) links against GPL or LGPL libraries, the resulting binaries will be published under the GPL or LGPL license. This occurs when a certain combination of dependencies created by the VA build configuration pulls in copyleft libraries.
+
+If VA build configuration has made it necessary, find the corresponding (L)GPL license file in the root folder of a VA package, usually named `COPYING` and/or `COPYING.LESSER`. The Apache license formulating the license for the VA code will always be named LICENSE.md, and only refers to the source files and libraries that are _not linking against an (L)GPL library_.
+
+> A warning note: if you have received a VA package and are linking against the VACore library, be aware that you have to make your work compatible with (L)GPL, if it is necessary (if there is a LICENSE.(L)GPL.md file).
+> If you are redistributing a VA package, do not remove any license file.
+> If you are insecure, there is no harm in licensing your source and binary under (L)GPL if you are OK sharing your code and you don't believe that anyone will be building upon your work (and imposing to continue using GPL along the dependency chain).
+
 
 
 ### Logo
