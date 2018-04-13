@@ -2,8 +2,7 @@
 
 The VA logo is a figurative trademark of the Institute of Technical Acoustics (ITA), RWTH Aachen University.
 
-![alt text](VA_logo_solitaire_bt_300x200.png "Official solitaire VA (Virtual Acoustics) logo, black & transparent") 
-
+<img src="https://git.rwth-aachen.de/ita/VA/raw/e97d635c02a73653eae688ca4cd3dc8a2523dea1/logo/VA_logo_black_circle_white.png" width="250px" alt="Official solitaire VA (Virtual Acoustics) logo, black & transparent" />
 
 ### License
 
