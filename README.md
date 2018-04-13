@@ -53,9 +53,7 @@ If VA build configuration has made it necessary, find the corresponding (L)GPL l
 
 The VA logo is a figurative trade mark and has a dedicated license. You may use the logo under certain conditions. For more information, see the [README file in the logo folder](logo/README.md).
 
-<center>
-![alt text](logo/VA_logo_solitaire_bt_300x200.png "Official solitaire VA (Virtual Acoustics) logo, black & transparent")
-</center>
+<img src="https://git.rwth-aachen.de/ita/VA/raw/e97d635c02a73653eae688ca4cd3dc8a2523dea1/logo/VA_logo_black_circle_white.png" width="250px" alt="Official solitaire VA (Virtual Acoustics) logo, black & transparent" />
 
 
 ### Quick build guide
