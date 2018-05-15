@@ -70,7 +70,7 @@ endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
-	set( ITA_VA_WITH_BINDING_MATLAB ON CACHE BOOL "Include Matlab binding for VA" )
+	set( ITA_VA_WITH_BINDING_MATLAB OFF CACHE BOOL "Include Matlab binding for VA" )
 endif( )
 
 if( NOT DEFINED ITA_VA_WITH_BINDING_CS )
