@@ -87,7 +87,11 @@ endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
-	set( ITA_VA_WITH_UNITY_SCRIPTS OFF CACHE BOOL "Include VA Unity C# scripts" )
+	set( ITA_VA_WITH_UNITY_SCRIPTS ON CACHE BOOL "Include VA Unity C# scripts" )
+endif( )
+
+if( NOT DEFINED ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS )
+	set( ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS OFF CACHE BOOL "Include VA Unity Extensions C# scripts (requires further Unity packages like LHM and VRTK)" )
 endif( )
 
 
@@ -157,7 +161,7 @@ if( NOT DEFINED ITA_VA_VERSION_MAJOR )
 endif( )
 
 if( NOT DEFINED ITA_VA_VERSION_MINOR )
-	set( ITA_VA_VERSION_MINOR "a" CACHE STRING "VA version minor (usually a,b,c ...)" )
+	set( ITA_VA_VERSION_MINOR "b" CACHE STRING "VA version minor (usually a,b,c ...)" )
 endif( )
 
 
@@ -203,5 +207,8 @@ endif( )
 
 if( ITA_VA_WITH_UNITY_SCRIPTS )
 	install( DIRECTORY "VAUnity" DESTINATION "unity" )
+endif( )
+
+if( ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS )
 	install( DIRECTORY "VAUnityExtensions" DESTINATION "unity" )
 endif( )
