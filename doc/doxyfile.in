@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "Virtual Acoustics (VA) C++ API"
-PROJECT_NUMBER         = v2018b
+PROJECT_NUMBER         = v2019a
 PROJECT_BRIEF          = "Virtual Acoustics is a real-time auralization framework devoted to Virtual Reality."
 #PROJECT_LOGO           = @CMAKE_CURRENT_SOURCE_DIR@/logo.png
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/
