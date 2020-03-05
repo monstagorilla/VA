@@ -141,7 +141,7 @@ if( ITA_VA_WITH_BINDING_PYTHON )
 endif( )
 
 
-if( MSVC )
+if( MSVC AND NOT ITA_SUITE_COMMON_BUILD )
 	set( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS ON CACHE BOOL "If enabled, msvc projects of external ITA packages will be included in the solution" )
 	if( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS AND ITA_VA_WITH_CORE )
 		vista_add_external_msvc_project_of_package( VistaCoreLibs "VistaCoreLibs" DEPENDENT VANet VACore SILENT )
@@ -158,7 +158,7 @@ endif( )
 # version
 
 if( NOT DEFINED ITA_VA_VERSION_MAJOR )
-	set( ITA_VA_VERSION_MAJOR "v2019" CACHE STRING "VA version major (usually 'v' and year)" )
+	set( ITA_VA_VERSION_MAJOR "v2020" CACHE STRING "VA version major (usually 'v' and year)" )
 endif( )
 
 if( NOT DEFINED ITA_VA_VERSION_MINOR )
