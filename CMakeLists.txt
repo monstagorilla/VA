@@ -163,7 +163,7 @@ if( NOT DEFINED ITA_VA_VERSION_MAJOR )
 endif( )
 
 if( NOT DEFINED ITA_VA_VERSION_MINOR )
-	set( ITA_VA_VERSION_MINOR "a" CACHE STRING "VA version minor (usually a,b,c ...)" )
+	set( ITA_VA_VERSION_MINOR "b" CACHE STRING "VA version minor (usually a,b,c ...)" )
 endif( )
 
 
