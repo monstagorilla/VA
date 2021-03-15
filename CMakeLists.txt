@@ -161,11 +161,11 @@ endif( )
 # version
 
 if( NOT DEFINED ITA_VA_VERSION_MAJOR )
-	set( ITA_VA_VERSION_MAJOR "v2020" CACHE STRING "VA version major (usually 'v' and year)" )
+	set( ITA_VA_VERSION_MAJOR "v2021" CACHE STRING "VA version major (usually 'v' and year)" )
 endif( )
 
 if( NOT DEFINED ITA_VA_VERSION_MINOR )
-	set( ITA_VA_VERSION_MINOR "b" CACHE STRING "VA version minor (usually a,b,c ...)" )
+	set( ITA_VA_VERSION_MINOR "a" CACHE STRING "VA version minor (usually a,b,c ...)" )
 endif( )
 
 
