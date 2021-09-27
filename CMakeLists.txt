@@ -1,21 +1,42 @@
-cmake_minimum_required(VERSION 2.8.12)
-project( VA )
+cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 
-set( VA_COMMON_BUILD ON )
+project (
+	VA
+	VERSION 2021.1
+	LANGUAGES CXX C
+)
+
+IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  SET(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/dist/$<CONFIG> CACHE PATH "" FORCE)
+ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+set (CMAKE_DEBUG_POSTFIX "-d")
+
+if (NOT DEFINED CMAKE_RUNTIME_OUTPUT_DIRECTORY AND WIN32)
+	set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/bin)
+	set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/lib)
+	set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/lib)
+endif ()
+
+if (CMAKE_GENERATOR MATCHES "Visual Studio")
+	set_property (GLOBAL PROPERTY USE_FOLDERS ON)
+endif ()
 
 if( MSVC )
-	add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
+	#add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
 endif( )
 
 # example how to set ExternalLibs folder for an entire project (without ENV var)
-list( APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../VistaCMakeCommon" )
+#list( APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../VistaCMakeCommon" )
 
 # ... or with ENV variable
-list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
+#list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
 
-include( VistaCommon )
+#include( VistaCommon )
 
-vista_find_package( Doxygen QUIET )
+#vista_find_package( Doxygen QUIET )
+
+option(BUILD_SHARED_LIBS "" ON)
 
 if( NOT DEFINED ITA_VISTA_BUILD_STATIC )
 	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ViSTA libraries" )
@@ -45,7 +66,7 @@ endif( )
 
 
 if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
-	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application" )
+	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application (requires ITA_VA_WITH_CORE)" )
 endif( )
 
 
@@ -96,7 +117,7 @@ endif( )
 
 
 if( ITA_VA_INSTALL_WITH_DLLS )
-	vista_install_all_dlls( bin )
+	#vista_install_all_dlls( bin )
 endif( )
 
 
@@ -114,47 +135,50 @@ if( ITA_VA_WITH_CORE )
 endif( )
 
 if( ITA_VA_WITH_SERVER_APP )
+	if( NOT ITA_VA_WITH_CORE )
+		message( SEND_ERROR "Cannot build VAServer without VACore." )
+	endif( )
 	add_subdirectory( VAServer )
-	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
+	#vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
 endif( )
 
 if( ITA_VA_WITH_REDSTART_APP )
-	add_subdirectory( Redstart )
-	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
+	#add_subdirectory( Redstart )
+	#vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
 endif( )
 
 if( ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
-	vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
+	#vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
 endif( )
 
 if( ITA_VA_WITH_BINDING_CS )
-	add_subdirectory( VACS )
+	#add_subdirectory( VACS )
 endif( )
 
 if( ITA_VA_WITH_BINDING_LUA )
-	add_subdirectory( VALua )
+	#add_subdirectory( VALua )
 endif( )
 
 if( ITA_VA_WITH_BINDING_PYTHON )
-	add_subdirectory( VAPython )
+	#add_subdirectory( VAPython )
 endif( )
 
 
 if( MSVC AND NOT ITA_SUITE_COMMON_BUILD )
 	set( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS ON CACHE BOOL "If enabled, msvc projects of external ITA packages will be included in the solution" )
 	if( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS AND ITA_VA_WITH_CORE )
-		vista_add_external_msvc_project_of_package( VistaCoreLibs "VistaCoreLibs" DEPENDENT VANet VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITABase "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAConvolution "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITACTC "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITADataSources "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITADSP "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITASampler "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAFFT "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAGeo "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAPropagationPathSim "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITASimulationScheduler "ITASimulationScheduler" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( VistaCoreLibs "VistaCoreLibs" DEPENDENT VANet VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITABase "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITAConvolution "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITACTC "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITADataSources "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITADSP "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITASampler "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITAFFT "ITACoreLibs" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITAGeo "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITAPropagationPathSim "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
+		#vista_add_external_msvc_project_of_package( ITASimulationScheduler "ITASimulationScheduler" DEPENDENT VACore SILENT )
 	endif( )
 endif( )
 
