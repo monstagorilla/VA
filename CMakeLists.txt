@@ -27,26 +27,8 @@ endif ()
 
 #---Options---
 
+#Shared libs switch
 option(BUILD_SHARED_LIBS "" ON)
-
-#TODO: Still required?
-#if( NOT DEFINED ITA_VISTA_BUILD_STATIC )
-#	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ViSTA libraries" )
-#endif( )
-#if( NOT DEFINED ITA_CORE_LIBS_BUILD_STATIC )
-#	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ITA core libraries" )
-#endif( )
-#if( NOT DEFINED ITA_GEOMETRICAL_ACOUSTICS_BUILD_STATIC )
-#	set( ITA_GEOMETRICAL_ACOUSTICS_BUILD_STATIC OFF CACHE BOOL "Build against static ITA geometrical acoustics libraries" )
-#endif( )
-#if( NOT DEFINED ITA_ACOUSTIC_VISUALIZATION_STATIC )
-#	set( ITA_ACOUSTIC_VISUALIZATION_STATIC OFF CACHE BOOL "Build against static ITA acoustic visualization libraries" )
-#endif( )
-
-#TODO: Still required?
-#if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
-#	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
-#endif( )
 
 #Switches for components
 option( ITA_VA_WITH_CORE "Include VA core library" OFF )
@@ -66,9 +48,6 @@ option( ITA_VA_WITH_BINDING_PYTHON "Include Python binding for VA (requires Pyth
 option( ITA_VA_WITH_UNITY_SCRIPTS "Include VA Unity C# scripts" ON )
 option( ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS "Include VA Unity Extensions C# scripts (requires further Unity packages like LHM and VRTK)" OFF )
 
-#if( ITA_VA_INSTALL_WITH_DLLS )
-	#vista_install_all_dlls( bin )
-#endif( )
 
 # Version
 if( NOT DEFINED ITA_VA_VERSION_MAJOR )
