@@ -96,11 +96,6 @@ endif( )
 
 # Documentation
 if( ITA_VA_GENERATE_DOCUMENTATION )
-	#TODO: Find doxygen / Test this
-
-	if( NOT DOXYGEN_EXECUTABLE )
-		message( FATAL_ERROR "VA documentation requires Doxygen." )
-	endif( )
 	
 	set( VAWEBSITE_FOUND OFF )
 	if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
