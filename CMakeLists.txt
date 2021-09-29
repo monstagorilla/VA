@@ -6,10 +6,9 @@ project (
 	LANGUAGES CXX C
 )
 
-#Set the install root folder if not specified by the user (e.g. BinDirectory/dist/Release
-#TODO: $<CONFIG> is not properly resolved
+#Set the install root folder if not specified by the user
 IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/dist/$<CONFIG> CACHE PATH "" FORCE)
+  set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/dist CACHE PATH "Install root directory" FORCE)
 ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 set (CMAKE_DEBUG_POSTFIX "-d")
