@@ -28,7 +28,7 @@ endif ()
 #---Options---
 
 #Shared libs switch
-option(BUILD_SHARED_LIBS "" ON)
+option (BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 #Switches for components
 option( ITA_VA_WITH_CORE "Include VA core library" OFF )
