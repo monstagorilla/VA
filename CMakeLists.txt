@@ -33,8 +33,6 @@ option(BUILD_SHARED_LIBS "" ON)
 #Switches for components
 option( ITA_VA_WITH_CORE "Include VA core library" OFF )
 option( ITA_VA_WITH_SERVER_APP "Include VA server application (requires ITA_VA_WITH_CORE)" OFF )
-#TODO: Get rid of Redstart
-#option( ITA_VA_WITH_REDSTART_APP "Include Redstart, the VA GUI application" OFF )
 option( ITA_VA_WITH_TESTS "Include VA tests" OFF )
 option( ITA_VA_GENERATE_DOCUMENTATION "Generate source VA documentation (requires Doxygen)" OFF )
 option( ITA_VA_WITH_BENCHMARKS "Include VA benchmarks" OFF )
@@ -42,8 +40,6 @@ option( ITA_VA_WITH_BENCHMARKS "Include VA benchmarks" OFF )
 #Bindings
 option( ITA_VA_WITH_BINDING_MATLAB "Include Matlab binding for VA (requires Matlab and NatNetSDK)" OFF )
 option( ITA_VA_WITH_BINDING_CS "Include C# binding for VA" ON )
-#TODO: Remove VALUA
-#option( ITA_VA_WITH_BINDING_LUA "Include VA benchmarks" OFF )
 option( ITA_VA_WITH_BINDING_PYTHON "Include Python binding for VA (requires Python)" OFF )
 option( ITA_VA_WITH_UNITY_SCRIPTS "Include VA Unity C# scripts" ON )
 option( ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS "Include VA Unity Extensions C# scripts (requires further Unity packages like LHM and VRTK)" OFF )
@@ -81,9 +77,6 @@ if( ITA_VA_WITH_SERVER_APP )
 	add_subdirectory( VAServer )
 endif( )
 
-#if( ITA_VA_WITH_REDSTART_APP )
-	#add_subdirectory( Redstart )
-#endif( )
 
 if( ITA_VA_WITH_BINDING_MATLAB )
 	add_subdirectory( VAMatlab )
@@ -92,11 +85,6 @@ endif( )
 if( ITA_VA_WITH_BINDING_CS )
 	add_subdirectory( VACS )
 endif( )
-
-#TODO: Remove?
-#if( ITA_VA_WITH_BINDING_LUA )
-	#add_subdirectory( VALua )
-#endif( )
 
 if( ITA_VA_WITH_BINDING_PYTHON )
 	#TODO: Fix and test VAPython
