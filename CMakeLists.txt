@@ -127,24 +127,6 @@ endif( )
 #---END: VA submodules---
 
 
-#TODO: Still required?
-if( MSVC AND NOT ITA_SUITE_COMMON_BUILD )
-	set( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS ON CACHE BOOL "If enabled, msvc projects of external ITA packages will be included in the solution" )
-	if( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS AND ITA_VA_WITH_CORE )
-		#vista_add_external_msvc_project_of_package( VistaCoreLibs "VistaCoreLibs" DEPENDENT VANet VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITABase "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITAConvolution "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITACTC "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITADataSources "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITADSP "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITASampler "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITAFFT "ITACoreLibs" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITAGeo "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITAPropagationPathSim "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
-		#vista_add_external_msvc_project_of_package( ITASimulationScheduler "ITASimulationScheduler" DEPENDENT VACore SILENT )
-	endif( )
-endif( )
-
 # Documentation
 if( ITA_VA_GENERATE_DOCUMENTATION )
 	#TODO: Find doxygen / Test this
