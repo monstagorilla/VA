@@ -5,7 +5,6 @@ if ( NOT DOXYGEN_FOUND )
 	message( FATAL_ERROR "VA documentation requires Doxygen which could not be found. Did you install it?" )
 endif()
 
-#TODO: Does not work if called from ITASuite
 configure_file( doxyfile.in doxyfile @ONLY )
 configure_file( doxygen.footer.html.in doxygen.footer.html @ONLY )
 
