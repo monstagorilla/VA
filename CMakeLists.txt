@@ -87,11 +87,34 @@ if( ITA_VA_WITH_BINDING_CS )
 endif( )
 
 if( ITA_VA_WITH_BINDING_PYTHON )
-	#TODO: Fix and test VAPython
-	#add_subdirectory( VAPython )
+	add_subdirectory( VAPython )
 endif( )
 
 #---END: VA submodules---
+
+#Add all-build target (can be used to check whether RAVEN libraries are already included)
+add_custom_target( ${PROJECT_NAME}
+	DEPENDS VA::VABase VA::VANet
+	COMMAND ${CMAKE_COMMAND} -E echo "---------------------------------------------------------"
+	COMMAND ${CMAKE_COMMAND} -E echo "Finished building all Virtual Acoustics (VA) subprojects."
+	COMMAND ${CMAKE_COMMAND} -E echo "---------------------------------------------------------"
+)
+if (ITA_VA_WITH_CORE)
+	add_dependencies (${PROJECT_NAME} VA::VACore)
+endif()
+if (ITA_VA_WITH_BINDING_CS)
+	add_dependencies (${PROJECT_NAME} VA::VANetCSWrapper)
+endif()
+if (ITA_VA_WITH_BINDING_MATLAB)
+	add_dependencies (${PROJECT_NAME} VAMatlab)
+endif()
+if (ITA_VA_WITH_BINDING_PYTHON)
+	add_dependencies (${PROJECT_NAME} VA::VAPython)
+endif()
+if (ITA_VA_WITH_SERVER_APP)
+	add_dependencies (${PROJECT_NAME} VAServer)
+endif()
+set_property (TARGET ${PROJECT_NAME} PROPERTY FOLDER "BuildProjectCollections")
 
 
 # Documentation
