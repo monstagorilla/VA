@@ -1,218 +1,181 @@
-cmake_minimum_required(VERSION 2.8.12)
-project( VA )
-
-set( VA_COMMON_BUILD ON )
-
-if( MSVC )
-	add_definitions( "/wd4251 /W4 -D_CRT_SECURE_NO_WARNINGS" )
-endif( )
-
-# example how to set ExternalLibs folder for an entire project (without ENV var)
-list( APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../VistaCMakeCommon" )
-
-# ... or with ENV variable
-list( APPEND CMAKE_MODULE_PATH "$ENV{VISTA_CMAKE_COMMON}" )
-
-include( VistaCommon )
-
-vista_find_package( Doxygen QUIET )
-
-if( NOT DEFINED ITA_VISTA_BUILD_STATIC )
-	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ViSTA libraries" )
-endif( )
-
-if( NOT DEFINED ITA_CORE_LIBS_BUILD_STATIC )
-	set( ITA_VISTA_BUILD_STATIC OFF CACHE BOOL "Build against static ITA core libraries" )
-endif( )
-
-if( NOT DEFINED ITA_GEOMETRICAL_ACOUSTICS_BUILD_STATIC )
-	set( ITA_GEOMETRICAL_ACOUSTICS_BUILD_STATIC OFF CACHE BOOL "Build against static ITA geometrical acoustics libraries" )
-endif( )
-
-if( NOT DEFINED ITA_ACOUSTIC_VISUALIZATION_STATIC )
-	set( ITA_ACOUSTIC_VISUALIZATION_STATIC OFF CACHE BOOL "Build against static ITA acoustic visualization libraries" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_INSTALL_WITH_DLLS )
-	set( ITA_VA_INSTALL_WITH_DLLS ON CACHE BOOL "Install VA with depending DLLs (use this switch with care)" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_CORE )
-	set( ITA_VA_WITH_CORE OFF CACHE BOOL "Include VA core library" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_SERVER_APP )
-	set( ITA_VA_WITH_SERVER_APP OFF CACHE BOOL "Include VA server application" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_REDSTART_APP )
-	set( ITA_VA_WITH_REDSTART_APP OFF CACHE BOOL "Include Redstart, the VA GUI application" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_TESTS )
-	set( ITA_VA_WITH_TESTS OFF CACHE BOOL "Include VA tests" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_GENERATE_DOCUMENTATION )
-	set( ITA_VA_GENERATE_DOCUMENTATION OFF CACHE BOOL "Generate source VA documentation (requires Doxygen)" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_BENCHMARKS )
-	set( ITA_VA_WITH_BENCHMARKS OFF CACHE BOOL "Include VA benchmarks" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_BINDING_MATLAB )
-	set( ITA_VA_WITH_BINDING_MATLAB OFF CACHE BOOL "Include Matlab binding for VA" )
-endif( )
-
-if( NOT DEFINED ITA_VA_WITH_BINDING_CS )
-	set( ITA_VA_WITH_BINDING_CS ON CACHE BOOL "Include C# binding for VA" )
-endif( )
-
-if( NOT DEFINED ITA_VA_WITH_BINDING_LUA )
-	set( ITA_VA_WITH_BINDING_LUA OFF CACHE BOOL "Include Lua binding for VA" )
-endif( )
-
-if( NOT DEFINED ITA_VA_WITH_BINDING_PYTHON )
-	set( ITA_VA_WITH_BINDING_PYTHON OFF CACHE BOOL "Include Python binding for VA" )
-endif( )
-
-
-if( NOT DEFINED ITA_VA_WITH_UNITY_SCRIPTS )
-	set( ITA_VA_WITH_UNITY_SCRIPTS ON CACHE BOOL "Include VA Unity C# scripts" )
-endif( )
-
-if( NOT DEFINED ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS )
-	set( ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS OFF CACHE BOOL "Include VA Unity Extensions C# scripts (requires further Unity packages like LHM and VRTK)" )
-endif( )
-
-
-if( ITA_VA_INSTALL_WITH_DLLS )
-	vista_install_all_dlls( bin )
-endif( )
-
-
-# VA submodules
-
-add_subdirectory( VABase )
-add_subdirectory( VANet )
-
-if( ITA_VA_WITH_CORE )
-	add_subdirectory( VACore )
-	if( ITA_VA_COPYING_GNU_GPL )
-		message( "The VACore configuration you have selected requires copying under the terms of the GNU General Public License. This license includes a copyleft. If you are linking against this library version, make sure that the license agreement is not violated. Will add the required COPYING file to the distribution." )
-		
-	endif( )
-endif( )
-
-if( ITA_VA_WITH_SERVER_APP )
-	add_subdirectory( VAServer )
-	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
-endif( )
-
-if( ITA_VA_WITH_REDSTART_APP )
-	add_subdirectory( Redstart )
-	vista_use_package( VACore REQUIRED FIND_DEPENDENCIES ) # ... installs VACore dll
-endif( )
-
-if( ITA_VA_WITH_BINDING_MATLAB )
-	add_subdirectory( VAMatlab )
-	vista_use_package( VAMatlab REQUIRED FIND_DEPENDENCIES ) # ... installs VAMatlab mex
-endif( )
-
-if( ITA_VA_WITH_BINDING_CS )
-	add_subdirectory( VACS )
-endif( )
-
-if( ITA_VA_WITH_BINDING_LUA )
-	add_subdirectory( VALua )
-endif( )
-
-if( ITA_VA_WITH_BINDING_PYTHON )
-	add_subdirectory( VAPython )
-endif( )
-
-
-if( MSVC AND NOT ITA_SUITE_COMMON_BUILD )
-	set( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS ON CACHE BOOL "If enabled, msvc projects of external ITA packages will be included in the solution" )
-	if( ITA_VA_INCLUDE_EXTERNAL_MSVC_PROJECTS AND ITA_VA_WITH_CORE )
-		vista_add_external_msvc_project_of_package( VistaCoreLibs "VistaCoreLibs" DEPENDENT VANet VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITABase "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAConvolution "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITACTC "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITADataSources "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITADSP "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITASampler "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAFFT "ITACoreLibs" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAGeo "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITAPropagationPathSim "ITAGeometricalAcoustics" DEPENDENT VACore SILENT )
-		vista_add_external_msvc_project_of_package( ITASimulationScheduler "ITASimulationScheduler" DEPENDENT VACore SILENT )
-	endif( )
-endif( )
-
-# version
-
-if( NOT DEFINED ITA_VA_VERSION_MAJOR )
-	set( ITA_VA_VERSION_MAJOR "v2021" CACHE STRING "VA version major (usually 'v' and year)" )
-endif( )
-
-if( NOT DEFINED ITA_VA_VERSION_MINOR )
-	set( ITA_VA_VERSION_MINOR "a" CACHE STRING "VA version minor (usually a,b,c ...)" )
-endif( )
-
-
-# (selective) license, readme and logo
-
-install( FILES README.md DESTINATION . )
-install( DIRECTORY logo DESTINATION . )
-
-if( ITA_VA_COPYING_GNU_GPL )
-
-	set( SELECTED_LICENSE "GNU General Public License" )
-	set( GPL_DEPENDENCIES "FFTW3" )
-	configure_file( COPYING.proto "${CMAKE_CURRENT_SOURCE_DIR}/COPYING" @ONLY )
-	install( FILES COPYING DESTINATION . )
-	
-else( )
-
-	install( FILES LICENSE.md DESTINATION . )
-
-endif( )
-
-
-# doc
-
-if( ITA_VA_GENERATE_DOCUMENTATION )
-
-	if( NOT DOXYGEN_EXECUTABLE )
-		message( FATAL_ERROR "VA documentation requires Doxygen." )
-	endif( )
-	
-	set( VAWEBSITE_FOUND OFF )
-	if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
-		set( VAWEBSITE_FOUND ON )
-		set( VAWEBSITE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite" )
-	endif( )
-
-	add_subdirectory( "doc" )
-
-endif( )
-
-
-# unity
-
-if( ITA_VA_WITH_UNITY_SCRIPTS )
-	install( DIRECTORY "VAUnity" DESTINATION "unity" )
-endif( )
-
-if( ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS )
-	install( DIRECTORY "VAUnityExtensions" DESTINATION "unity" )
-endif( )
+cmake_minimum_required (VERSION 3.20 FATAL_ERROR)
+
+project (
+	VA
+	VERSION 2021.0
+	LANGUAGES CXX C
+)
+
+# Set the install root folder if not specified by the user
+if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+	set (
+		CMAKE_INSTALL_PREFIX
+		${CMAKE_CURRENT_BINARY_DIR}/dist
+		CACHE PATH "Install root directory" FORCE
+	)
+	set (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT OFF)
+endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+set (CMAKE_DEBUG_POSTFIX "-d")
+
+if (NOT DEFINED CMAKE_RUNTIME_OUTPUT_DIRECTORY AND WIN32)
+	set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/bin)
+	set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/lib)
+	set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/lib)
+endif ()
+
+if (CMAKE_GENERATOR MATCHES "Visual Studio")
+	set_property (GLOBAL PROPERTY USE_FOLDERS ON)
+endif ()
+
+# ---Options---
+
+# Shared libs switch
+option (BUILD_SHARED_LIBS "Build shared libraries" ON)
+
+# Switches for components
+option (ITA_VA_WITH_CORE "Include VA core library" OFF)
+option (ITA_VA_WITH_SERVER_APP "Include VA server application (requires ITA_VA_WITH_CORE)" OFF)
+option (ITA_VA_WITH_TESTS "Include VA tests" OFF)
+option (ITA_VA_GENERATE_DOCUMENTATION "Generate source VA documentation (requires Doxygen)" OFF)
+option (ITA_VA_WITH_BENCHMARKS "Include VA benchmarks" OFF)
+
+# Bindings
+option (ITA_VA_WITH_BINDING_MATLAB "Include Matlab binding for VA (requires Matlab and NatNetSDK)" OFF)
+option (ITA_VA_WITH_BINDING_CS "Include C# binding for VA" ON)
+option (ITA_VA_WITH_BINDING_PYTHON "Include Python binding for VA (requires Python)" OFF)
+option (ITA_VA_WITH_UNITY_SCRIPTS "Include VA Unity C# scripts" ON)
+option (ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS
+		"Include VA Unity Extensions C# scripts (requires further Unity packages like LHM and VRTK)" OFF
+)
+
+# Version
+math (EXPR VA_RELEASE_LETTER "${PROJECT_VERSION_MINOR}+97")
+string (ASCII ${VA_RELEASE_LETTER} VA_RELEASE_LETTER)
+
+# ---End: Options---
+
+# ---VA submodules---
+
+add_subdirectory (VABase)
+add_subdirectory (VANet)
+
+if (ITA_VA_WITH_CORE)
+	add_subdirectory (VACore)
+	if (ITA_VA_COPYING_GNU_GPL)
+		message (
+			"The VACore configuration you have selected requires copying under the terms of the GNU General Public License. This license includes a copyleft. If you are linking against this library version, make sure that the license agreement is not violated. Will add the required COPYING file to the distribution."
+		)
+
+	endif ()
+endif ()
+
+if (ITA_VA_WITH_SERVER_APP)
+	if (NOT ITA_VA_WITH_CORE)
+		message (SEND_ERROR "Cannot build VAServer without VACore. Activate ITA_VA_WITH_CORE first")
+	endif ()
+	add_subdirectory (VAServer)
+endif ()
+
+if (ITA_VA_WITH_BINDING_MATLAB)
+	add_subdirectory (VAMatlab)
+endif ()
+
+if (ITA_VA_WITH_BINDING_CS)
+	add_subdirectory (VACS)
+endif ()
+
+if (ITA_VA_WITH_BINDING_PYTHON)
+	add_subdirectory (VAPython)
+endif ()
+
+# ---END: VA submodules---
+
+# Add all-build target (can be used to check whether RAVEN libraries are already included)
+add_custom_target (
+	${PROJECT_NAME}
+	DEPENDS VA::VABase VA::VANet
+	COMMAND ${CMAKE_COMMAND} -E echo "---------------------------------------------------------"
+	COMMAND ${CMAKE_COMMAND} -E echo "Finished building all Virtual Acoustics (VA) subprojects."
+	COMMAND ${CMAKE_COMMAND} -E echo "---------------------------------------------------------"
+)
+if (ITA_VA_WITH_CORE)
+	add_dependencies (${PROJECT_NAME} VA::VACore)
+endif ()
+if (ITA_VA_WITH_BINDING_CS)
+	add_dependencies (${PROJECT_NAME} VA::VANetCSWrapper)
+endif ()
+if (ITA_VA_WITH_BINDING_MATLAB)
+	add_dependencies (${PROJECT_NAME} VAMatlab)
+endif ()
+if (ITA_VA_WITH_BINDING_PYTHON)
+	add_dependencies (${PROJECT_NAME} VA::VAPython)
+endif ()
+if (ITA_VA_WITH_SERVER_APP)
+	add_dependencies (${PROJECT_NAME} VAServer)
+endif ()
+set_property (TARGET ${PROJECT_NAME} PROPERTY FOLDER "BuildProjectCollections")
+
+# Documentation
+if (ITA_VA_GENERATE_DOCUMENTATION)
+
+	set (VAWEBSITE_FOUND OFF)
+	if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite")
+		set (VAWEBSITE_FOUND ON)
+		set (VAWEBSITE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/VAWebsite")
+	endif ()
+
+	add_subdirectory ("doc")
+
+endif ()
+
+# ---Install---
+
+# (Selective) license, readme and logo
+install (
+	FILES README.md
+	DESTINATION .
+	COMPONENT ${PROJECT_NAME}
+)
+install (
+	DIRECTORY logo
+	DESTINATION .
+	COMPONENT ${PROJECT_NAME}
+)
+
+if (ITA_VA_COPYING_GNU_GPL)
+
+	set (SELECTED_LICENSE "GNU General Public License")
+	set (GPL_DEPENDENCIES "FFTW3")
+	configure_file (COPYING.proto "${CMAKE_CURRENT_SOURCE_DIR}/COPYING" @ONLY)
+	install (
+		FILES COPYING
+		DESTINATION .
+		COMPONENT ${PROJECT_NAME}
+	)
+
+else ()
+
+	install (
+		FILES LICENSE.md
+		DESTINATION .
+		COMPONENT ${PROJECT_NAME}
+	)
+
+endif ()
+
+# Unity scripts
+if (ITA_VA_WITH_UNITY_SCRIPTS)
+	install (
+		DIRECTORY "VAUnity"
+		DESTINATION "unity"
+		COMPONENT ${PROJECT_NAME}
+	)
+endif ()
+if (ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS)
+	install (
+		DIRECTORY "VAUnityExtensions"
+		DESTINATION "unity"
+		COMPONENT ${PROJECT_NAME}
+	)
+endif ()
