@@ -50,20 +50,8 @@ option (ITA_VA_WITH_UNITY_EXTENSIONS_SCRIPTS
 )
 
 # Version
-if (NOT DEFINED ITA_VA_VERSION_MAJOR)
-	set (
-		ITA_VA_VERSION_MAJOR
-		"v2021"
-		CACHE STRING "VA version major (usually 'v' and year)"
-	)
-endif ()
-if (NOT DEFINED ITA_VA_VERSION_MINOR)
-	set (
-		ITA_VA_VERSION_MINOR
-		"a"
-		CACHE STRING "VA version minor (usually a,b,c ...)"
-	)
-endif ()
+math (EXPR VA_RELEASE_LETTER "${PROJECT_VERSION_MINOR}+97")
+string (ASCII ${VA_RELEASE_LETTER} VA_RELEASE_LETTER)
 
 # ---End: Options---
 
